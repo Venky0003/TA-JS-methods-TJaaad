@@ -101,9 +101,12 @@ console.log(changeArray([1, 2, 3, 4, 5, 6], addFive));
     console.log(sendMessage("Hello Prompt!", prompt));
 */
 
-// function sendMessage(message,cb){
-
-// }
+function sendMessage(message,cb){
+  return (cb(message));
+}
+console.log(sendMessage("Hello", console.log));
+console.log(sendMessage("Hello Alert!", alert));
+console.log(sendMessage("Hello Prompt!", prompt));
 /*
 
  Create a function named `first` that accepts an argument a function (callback) and return the same function defination.
@@ -112,14 +115,21 @@ console.log(changeArray([1, 2, 3, 4, 5, 6], addFive));
 function first(cb){
  return cb
 }
-console.log((6),addFive)
+//console.log((6),addFive)
 /*
  Create a function named `second`
   - Inside second create another function named `third` which accepts a number, adds 1 to it and returns it
   - Return the function defination (third) from the second function
   - Also write the required code to call the function
 */
-
+function second(){
+  function third(){
+    return num + 1;
+  };
+  return third;
+}
+let val = second ();
+console.log(val);
 /*
  Write a function named `callMe` which 
   - accept a function (callback function) as argument.
@@ -127,7 +137,14 @@ console.log((6),addFive)
   - return final varibale from the function.
   - also write the required code to call the function.
 */
-
+function callMe(cb){
+let final = cb()
+return final
+}
+let result = callMe(function (){
+  return 21;
+});
+console.log(result);
 // Data Starts (Don't change this)
 const people = [
   { name: 'John Doe', age: 16 },
