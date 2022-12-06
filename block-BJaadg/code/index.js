@@ -17,7 +17,7 @@ console.log(`The cahracter at index  "${word}" is  ${indexOfIs}`)
 /*
 3. Log the message saying `The index of first is in quote is 7`
 */
-console.log(`The index of first is in quote is 7`)
+console.log(`The index of first is in quote is ${indexOfIs}`)
 /*
 4. Log the message for first 6 characters of quote like this.
   The character at index 0 is 'T'
@@ -27,7 +27,9 @@ console.log(`The index of first is in quote is 7`)
   The character at index 4 is 'e'
   The character at index 5 is ' '
 */
-
+for(let i=0;i<6;i++){
+  console.log(`The character at index ${i} is ${quote[i]}`)
+}
 /*
 5. Using the variable from , to and quote variable dispaly this message
   "Syrio Forel said There is only one thing we say to death: Not today to Arya Stark." (use concat method)
@@ -70,11 +72,12 @@ console.log(`The index of second "${wordO}" is ${quote.indexOf(wordO,(second+1))
 /*
 13. Find the last index of letter "a" in quote.
 */
-console.log(quote.lastIndexOf("a"));
+let lastindexA = quote.lastIndexOf("a");
+console.log(lastindexA)
 /*
 14. Find the second last index of letter "a" in quote.
 */
-
+console.log(quote.lastIndexOf("a",lastindexA-1));
 /*
 15. Make the quote 70 character long. If it has less characters add rest as .......
 Example: "Hello" (convert to 10 characters) => "Hello....."
