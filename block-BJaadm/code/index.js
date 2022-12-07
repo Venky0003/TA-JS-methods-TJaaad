@@ -14,7 +14,7 @@ let persons = [
 ];
 
 // Create an array peopleName and store value of sex key from persons array
-let peopleName = persons.map((person) => person.sex)
+let peopleName = persons.map((person) => person.name)
 console.log(peopleName)
 // Create an array peopleGrade and store the value of grade key from persons array
 let peopleGrade = persons.map((person) => person.grade)
@@ -169,7 +169,7 @@ console.log([... peopleGrade].sort((a,b) =>a-b).pop());
 // Find the highest grade in female
 console.log([...femalePersons].map((g)=>g.grade).sort((a,b)=>a-b).pop())
 // Find the highest grade for people whose name starts with 'J' or 'P'
-console.log(persons.filter((person)=>{
+let gradeOfjp = persons.filter((person)=>{
   if(
     person.name[0] === "J" ||
     person.name[0] === "P"
@@ -179,7 +179,9 @@ console.log(persons.filter((person)=>{
   else {
   return false
   }
-}).map((g)=>g.grade).sort((a,b)=>a-b).pop())
+});
+let grademapJP = gradeOfjp.map((g)=>g.grade);
+console.log(grademapJP.sort((a,b)=>a-b).pop())
 // Sort the peopleGrade in ascending order and log the value of peopleGrade. Notice did the elements of peopleGrade got changed?
   console.log([...peopleGrade].sort((a,b)=>a-b))
 // Sort the peopleGrade in descending order
@@ -187,6 +189,6 @@ console.log([...peopleGrade].sort((a,b)=>b-a))
 // Sort the peopleGrade in descending order this time you have to make sure you don't mutate the original array
 console.log([...peopleGrade].sort((a,b)=>b-a))
 // Sort the array peopelName in ascending `ABCD..Za....z`
-console.log(peopleNames.sort())
+console.log(peopleName.sort())
 // Sort the array peopelName in ascending `ABCD..Za....z`. Make sure not to mutate the array
-console.log([...peopleNames].sort());
+console.log([...peopleName].sort());
