@@ -72,11 +72,16 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 
 */
-let fruitsObj = fruitBasket.reduce(function(acc, cur, i) {
-  acc[i] = cur;
-  return acc;
+let fruitsObj = fruitBasket.reduce((acc, cur) =>{
+  if(acc[cur]){
+    acc[cur]=acc[cur]+1;
+  }
+  else {
+    acc[cur] = 1;
+  }
+  return acc
 }, {});
-
+console.log(fruitsObj);
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -86,7 +91,10 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
-
+let fruitsArray = Object.keys(fruitsObj).reduce((acc,cv)=>{
+  acc=acc.concat([[cv,fruitsObj[cv]]])
+  return acc;
+},[])
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -123,32 +131,22 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
-function increment() {
-  let num = +prompt("Eneter a number")
-  return num + 1;
+function increment(val) {
+  return val + 1;
 }
-increment(8)
-console.log(increment());
-
-function double() {
-  let val= +prompt("Eneter a number")
+function double(val) {
   return val * 2;
 }
-double(7)
-console.log(double());
-
-function decrement() {
-  let val= +prompt("Eneter a number")
+function triple(val) {
+  return val * 3;
+}
+function decrement(val) {
   return val - 1;
 }
-console.log(decrement());
-
-function half() {
-  let val= +prompt("Eneter a number")
-   let res =Math.round(val / 2);
-   return res;
+function half(val) {
+   return Math.round(val/2);
 }
-console.log(half(7))
+
 let pipeline = [
   increment,
   double,
@@ -159,7 +157,10 @@ let pipeline = [
   half,
   increment,
 ];
-
+pipeline.reduce((acc,cv)=>{
+  acc =cv(acc);
+  return acc;
+},3)
 /*
 Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
 
@@ -189,3 +190,7 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+pipeline2.reduce((acc,cv)=>{
+  acc =cv(acc);
+  return acc;
+},8)
