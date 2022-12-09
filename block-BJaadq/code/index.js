@@ -2,34 +2,95 @@
 
 function countAllPeople() {
   // your code goes here
+  let  namesofall=[]
+  for(let house of got.houses){
+    for(let peoples of house.people){
+      namesofall.push(peoples.name)
+    }
+  }
+return namesofall.length;
 }
 
 function peopleByHouses() {
   // your code goes here
+  let peopleAllhouses={}
+  for(let house of got.houses){
+    peopleAllhouses[house.name]=house.people.length;
+  }
+  return peopleAllhouses;
 }
 
 function everyone() {
   // your code goes here
+  let allnames = []
+  for(let house of got.houses){
+    for(let peoples of house.people){
+      allnames.push(peoples.name)
+    }
+  }
+  return allnames;
 }
 
 function nameWithS() {
   // your code goes here
+  let allnamesS =[]
+  for(let house of got.houses){
+    for(let peoples of house.people){
+      if(peoples.name.includes("s") || 
+      peoples.name.includes("S")){
+      allnamesS.push(peoples.name)
+      }
+    }
+  }
+  return allnamesS;
 }
 
 function nameWithA() {
   // your code goes here
+  let allnamesA =[]
+  for(let house of got.houses){
+    for(let peoples of house.people){
+      if(peoples.name.includes("a") || 
+      peoples.name.includes("A")){
+      allnamesA.push(peoples.name)
+      }
+    }
+  }
+  return allnamesA;
 }
 
 function surnameWithS() {
   // your code goes here
+  let allsurnamesS =[]
+  for(let house of got.houses){
+    for(let peoples of house.people){
+     if(peoples.name.includes("S")){
+        allsurnamesS.push(peoples.name)
+      }
+    }
+  }
+  //  allsurnamesS.split(" ");
+   
+   return allsurnamesS.filter((elm) => elm.split(" ")[1][0].toUpperCase() === "S");
 }
 
 function surnameWithA() {
   // your code goes here
+  let allsurnamesA =[]
+  for(let house of got.houses){
+    for(let peoples of house.people){
+      if(peoples.name.includes("a") || 
+      peoples.name.includes("A")){
+        allsurnamesA.push(peoples.name)
+      }
+    }
+  }
+  return allsurnamesA.filter((elm)=>elm.split(" ")[1][0].toUpperCase()==="A")
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+
 }
 
 // Testing your result after writing your function
