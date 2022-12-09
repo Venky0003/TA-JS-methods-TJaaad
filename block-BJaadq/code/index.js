@@ -2,95 +2,66 @@
 
 function countAllPeople() {
   // your code goes here
-  let  namesofall=[]
-  for(let house of got.houses){
-    for(let peoples of house.people){
-      namesofall.push(peoples.name)
-    }
-  }
-return namesofall.length;
+  let allpeople = 0;
+ got.houses.forEach((house)=>{
+  allpeople = allpeople + house.people.length;
+ })
+return allpeople;
 }
 
 function peopleByHouses() {
   // your code goes here
   let peopleAllhouses={}
-  for(let house of got.houses){
-    peopleAllhouses[house.name]=house.people.length;
-  }
+  got.houses.forEach(house =>{
+    peopleAllhouses[house.name]=house.people.length
+  });
   return peopleAllhouses;
 }
 
 function everyone() {
   // your code goes here
   let allnames = []
-  for(let house of got.houses){
-    for(let peoples of house.people){
-      allnames.push(peoples.name)
-    }
-  }
+  got.houses.forEach((house)=>{
+     let allPeoplenames = house.people.map((person)=>person.name)
+  allnames = allnames.concat(allPeoplenames);
+  })
   return allnames;
 }
 
 function nameWithS() {
   // your code goes here
-  let allnamesS =[]
-  for(let house of got.houses){
-    for(let peoples of house.people){
-      if(peoples.name.includes("s") || 
-      peoples.name.includes("S")){
-      allnamesS.push(peoples.name)
-      }
-    }
-  }
-  return allnamesS;
+  let allnamesS = everyone();
+    return allnamesS.filter((names)=> names.toLowerCase().includes("s") 
+)
 }
 
 function nameWithA() {
   // your code goes here
-  let allnamesA =[]
-  for(let house of got.houses){
-    for(let peoples of house.people){
-      if(peoples.name.includes("a") || 
-      peoples.name.includes("A")){
-      allnamesA.push(peoples.name)
-      }
-    }
-  }
-  return allnamesA;
+  let allnamesA = everyone();
+    return allnamesA.filter((names)=> names.toLowerCase().includes("a") 
+)
 }
 
 function surnameWithS() {
-  // your code goes here
-  let allsurnamesS =[]
-  for(let house of got.houses){
-    for(let peoples of house.people){
-     if(peoples.name.includes("S")){
-        allsurnamesS.push(peoples.name)
-      }
-    }
-  }
-  //  allsurnamesS.split(" ");
+  let allsurnamesS =everyone();
    
    return allsurnamesS.filter((elm) => elm.split(" ")[1][0].toUpperCase() === "S");
 }
 
 function surnameWithA() {
   // your code goes here
-  let allsurnamesA =[]
-  for(let house of got.houses){
-    for(let peoples of house.people){
-      if(peoples.name.includes("a") || 
-      peoples.name.includes("A")){
-        allsurnamesA.push(peoples.name)
-      }
-    }
-  }
+  let allsurnamesA =everyone();
   return allsurnamesA.filter((elm)=>elm.split(" ")[1][0].toUpperCase()==="A")
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
-
+  let allhouses ={};
+  got.houses.forEach((house)=>{
+    allhouses[house.name]=house.people
+    .map((person)=>person.name)
+  })
+  return allhouses;
 }
 
 // Testing your result after writing your function
